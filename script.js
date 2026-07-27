@@ -341,3 +341,16 @@ navLinks.forEach(link => {
 // Website Loaded
 console.log("%cShot By Khadi Loaded Successfully!", "color:#D4AF37;font-size:18px;font-weight:bold;");
 console.log("%cDesigned by VoltageTech", "color:white;font-size:14px;");
+
+// ===== Mobile Hamburger Menu =====
+
+const menuToggle = document.getElementById("menu-toggle");
+const navMenu = document.getElementById("nav-menu");
+
+if (menuToggle && navMenu) {
+
+    menuToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+    });
+
+}

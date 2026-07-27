@@ -57,12 +57,11 @@ z-index:999;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 0;
+padding:10px 0;
 }
 
 .logo img{
-width:180px;
-transition:.3s;
+width:120px;
 }
 
 .logo img:hover{
@@ -101,7 +100,8 @@ color:#111;
 /* ========= HERO ========= */
 
 .hero{
-height:100vh;
+min-height:100vh;
+padding-top:80px;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -920,4 +920,27 @@ transform:translateY(0);
 ::selection{
 background:#D4AF37;
 color:#111;
+}
+
+/* ===== Header Fix ===== */
+
+header{
+    padding:0;
+}
+
+.navbar{
+    padding:10px 0 !important;
+    min-height:70px;
+}
+
+.logo img{
+    width:120px !important;
+}
+
+nav ul{
+    gap:20px !important;
+}
+
+.hero{
+    padding-top:90px;
 }

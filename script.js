@@ -1,248 +1,319 @@
-<<<<<<< HEAD
-// Scroll To Top Button
+// ======================================
+// SHOT BY KHADI - PREMIUM SCRIPT
+// Part 1
+// ======================================
 
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const target = document.querySelector(this.getAttribute("href"));
+
+        if (target) {
+            target.scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+    });
+});
+
+// Sticky Header
+const header = document.querySelector("header");
+
+if (header) {
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 100) {
+            header.style.background = "rgba(0,0,0,.95)";
+        } else {
+            header.style.background = "rgba(0,0,0,.75)";
+        }
+
+    });
+}
+
+// Fade In Sections
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+
+    });
+
+}, {
+    threshold: 0.15
+});
+
+document.querySelectorAll("section").forEach(section => {
+    section.classList.add("hidden");
+    observer.observe(section);
+});
+
+// Loader
+window.addEventListener("load", () => {
+
+    const loader = document.getElementById("loader");
+
+    if (loader) {
+
+        setTimeout(() => {
+
+            loader.style.opacity = "0";
+
+            setTimeout(() => {
+                loader.style.display = "none";
+            }, 800);
+
+        }, 1000);
+
+    }
+
+});
+
+// Scroll To Top
 const topBtn = document.getElementById("topBtn");
 
-window.onscroll = function () {
+if (topBtn) {
 
-    if(document.body.scrollTop > 300 || document.documentElement.scrollTop > 300){
+    window.addEventListener("scroll", () => {
 
-        topBtn.style.display = "block";
-
-    }else{
-
-        topBtn.style.display = "none";
-
-    }
-
-};
-
-topBtn.onclick = function(){
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
+        if (window.scrollY > 400) {
+            topBtn.style.display = "block";
+        } else {
+            topBtn.style.display = "none";
+        }
 
     });
 
-};
+    topBtn.addEventListener("click", () => {
 
-// Hide Loader
-
-window.addEventListener("load", function () {
-    document.getElementById("loader").style.display = "none";
-});
-
-// Mobile Menu
-
-const menuToggle = document.getElementById("menu-toggle");
-const navMenu = document.getElementById("nav-menu");
-
-menuToggle.addEventListener("click", function(){
-
-    navMenu.classList.toggle("active");
-
-});
-
-// Lightbox
-
-const galleryImages = document.querySelectorAll(".gallery-grid img");
-
-const lightbox = document.getElementById("lightbox");
-
-const lightboxImg = document.getElementById("lightbox-img");
-
-const closeBtn = document.querySelector(".close");
-
-galleryImages.forEach(image => {
-
-    image.addEventListener("click", () => {
-
-        lightbox.style.display = "flex";
-
-        lightboxImg.src = image.src;
-
-        lightboxImg.alt = image.alt;
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
 
     });
-
-});
-
-closeBtn.addEventListener("click", () => {
-
-    lightbox.style.display = "none";
-
-});
-
-lightbox.addEventListener("click", (e) => {
-
-    if(e.target === lightbox){
-
-        lightbox.style.display = "none";
-
-    }
-
-});
-
-// Hero Slideshow
-
-const hero = document.querySelector(".hero");
-
-const heroImages = [
-
-    "images/hero1.jpg",
-
-    "images/hero2.jpg",
-
-    "images/hero3.jpg",
-
-    "images/hero4.jpg",
-
-    "images/hero5.jpg"
-
-];
-
-let currentHero = 0;
-
-function changeHero(){
-
-    currentHero++;
-
-    if(currentHero >= heroImages.length){
-
-        currentHero = 0;
-
-    }
-
-    hero.style.backgroundImage =
-    `linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url('${heroImages[currentHero]}')`;
 
 }
 
-=======
-// Scroll To Top Button
+// Custom Cursor
+const cursor = document.querySelector(".cursor");
 
-const topBtn = document.getElementById("topBtn");
+if (cursor) {
 
-window.onscroll = function () {
+    document.addEventListener("mousemove", (e) => {
 
-    if(document.body.scrollTop > 300 || document.documentElement.scrollTop > 300){
-
-        topBtn.style.display = "block";
-
-    }else{
-
-        topBtn.style.display = "none";
-
-    }
-
-};
-
-topBtn.onclick = function(){
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
 
     });
-
-};
-
-// Hide Loader
-
-window.addEventListener("load", function () {
-    document.getElementById("loader").style.display = "none";
-});
-
-// Mobile Menu
-
-const menuToggle = document.getElementById("menu-toggle");
-const navMenu = document.getElementById("nav-menu");
-
-menuToggle.addEventListener("click", function(){
-
-    navMenu.classList.toggle("active");
-
-});
-
-// Lightbox
-
-const galleryImages = document.querySelectorAll(".gallery-grid img");
-
-const lightbox = document.getElementById("lightbox");
-
-const lightboxImg = document.getElementById("lightbox-img");
-
-const closeBtn = document.querySelector(".close");
-
-galleryImages.forEach(image => {
-
-    image.addEventListener("click", () => {
-
-        lightbox.style.display = "flex";
-
-        lightboxImg.src = image.src;
-
-        lightboxImg.alt = image.alt;
-
-    });
-
-});
-
-closeBtn.addEventListener("click", () => {
-
-    lightbox.style.display = "none";
-
-});
-
-lightbox.addEventListener("click", (e) => {
-
-    if(e.target === lightbox){
-
-        lightbox.style.display = "none";
-
-    }
-
-});
-
-// Hero Slideshow
-
-const hero = document.querySelector(".hero");
-
-const heroImages = [
-
-    "images/hero1.jpg",
-
-    "images/hero2.jpg",
-
-    "images/hero3.jpg",
-
-    "images/hero4.jpg",
-
-    "images/hero5.jpg"
-
-];
-
-let currentHero = 0;
-
-function changeHero(){
-
-    currentHero++;
-
-    if(currentHero >= heroImages.length){
-
-        currentHero = 0;
-
-    }
-
-    hero.style.backgroundImage =
-    `linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url('${heroImages[currentHero]}')`;
 
 }
 
->>>>>>> c91c89528c408912a3ab2dcef3316c34f8c733c3
-setInterval(changeHero,5000);
+// ======================================
+// SHOT BY KHADI - PREMIUM SCRIPT
+// Part 2
+// ======================================
+
+// Animated Counters
+const counters = document.querySelectorAll(".counter");
+
+if (counters.length > 0) {
+
+    const counterObserver = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                const counter = entry.target;
+                const target = Number(counter.dataset.target);
+
+                let count = 0;
+
+                const updateCounter = () => {
+
+                    const increment = target / 100;
+
+                    if (count < target) {
+
+                        count += increment;
+                        counter.innerText = Math.ceil(count);
+
+                        requestAnimationFrame(updateCounter);
+
+                    } else {
+
+                        counter.innerText = target + "+";
+
+                    }
+
+                };
+
+                updateCounter();
+
+                counterObserver.unobserve(counter);
+
+            }
+
+        });
+
+    });
+
+    counters.forEach(counter => {
+        counterObserver.observe(counter);
+    });
+
+}
+
+// Gallery Lightbox
+const galleryImages = document.querySelectorAll(".gallery-grid img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const closeLightbox = document.getElementById("closeLightbox");
+
+if (galleryImages.length && lightbox && lightboxImg && closeLightbox) {
+
+    galleryImages.forEach(img => {
+
+        img.addEventListener("click", () => {
+
+            lightbox.style.display = "flex";
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+
+        });
+
+    });
+
+    closeLightbox.addEventListener("click", () => {
+
+        lightbox.style.display = "none";
+
+    });
+
+    lightbox.addEventListener("click", (e) => {
+
+        if (e.target === lightbox) {
+            lightbox.style.display = "none";
+        }
+
+    });
+
+}
+
+// Gallery Filter
+const filterButtons = document.querySelectorAll(".filter-btn");
+const galleryItems = document.querySelectorAll(".gallery-grid .gallery-item");
+
+if (filterButtons.length && galleryItems.length) {
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            filterButtons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+
+            const filter = button.dataset.filter;
+
+            galleryItems.forEach(item => {
+
+                if (filter === "all" || item.dataset.category === filter) {
+
+                    item.style.display = "";
+
+                } else {
+
+                    item.style.display = "none";
+
+                }
+
+            });
+
+        });
+
+    });
+
+}
+
+// ======================================
+// SHOT BY KHADI - PREMIUM SCRIPT
+// Part 3
+// ======================================
+
+// WhatsApp Booking Form
+const form = document.querySelector(".booking-form");
+
+if (form) {
+
+    form.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const service = document.getElementById("service").value;
+        const message = document.getElementById("message").value;
+
+        const text = `📸 NEW BOOKING REQUEST
+
+Name: ${name}
+
+Email: ${email}
+
+Phone: ${phone}
+
+Service: ${service}
+
+Event Details:
+${message}
+
+Sent from the Shot By Khadi website.`;
+
+        window.open(
+            `https://wa.me/2348108178634?text=${encodeURIComponent(text)}`,
+            "_blank"
+        );
+
+    });
+
+}
+
+// Close Lightbox with ESC key
+document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+
+        const lightbox = document.getElementById("lightbox");
+
+        if (lightbox) {
+            lightbox.style.display = "none";
+        }
+
+    }
+
+});
+
+// Navbar Active Link
+const navLinks = document.querySelectorAll("nav a");
+
+navLinks.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.forEach(item => item.classList.remove("active"));
+        link.classList.add("active");
+
+    });
+
+});
+
+// Console Message
+console.log("%cShot By Khadi Website Loaded Successfully!", "color:#D4AF37;font-size:16px;font-weight:bold;");
+console.log("%cDesigned & Developed by VoltageTech", "color:#ffffff;font-size:14px;");
